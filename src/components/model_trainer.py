@@ -35,7 +35,16 @@ class ModelTrainer:
                 "DecisionTreeClassifier":DecisionTreeClassifier(),
                 "KNeighborsClassifier":KNeighborsClassifier()
             }
-            models_scores = dict=evaluate_model(X_train, y_train, X_test, y_test, models)
+            params={
+                "RandomForestClassifier":{'n_estimators':100, 'max_depth':10},
+                "GradientBoostingClassifier":{'n_estimators':100, 'learning_rate':0.1},
+                "AdaBoostClassifier":{'n_estimators':50, 'learning_rate':1.0},
+                "LogisticRegression":{'C':1.0, 'solver':'lbfgs'},
+                "SVC":{'C':1.0, 'kernel':'rbf'},
+                "DecisionTreeClassifier":{'max_depth':5},
+                "KNeighborsClassifier":{'n_neighbors':5}
+            }
+            models_scores = dict=evaluate_model(X_train, y_train, X_test, y_test, models,param=params)
             best_model_score= max(sorted(models_scores.values()))
             best_model_name = list(models_scores.keys())[list(models_scores.values()).index(best_model_score)]
             best_model_= models[best_model_name]
