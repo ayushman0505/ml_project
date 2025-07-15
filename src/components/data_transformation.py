@@ -77,6 +77,10 @@ class DataTransformation:
             logging.info("Applying preprocessor on training and testing dataframes")
             input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
+            print(f"Shape of input_feature_train_arr: {input_feature_train_arr.shape}")
+            print(f"Length of target_feature_train_df: {len(target_feature_train_df)}")
+            print(f"Shape of input_feature_test_arr: {input_feature_test_arr.shape}")
+            print(f"Length of target_feature_test_df: {len(target_feature_test_df)}")
             train_arr=np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr=np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             print("Data transformation completed successfully")
