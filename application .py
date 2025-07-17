@@ -6,8 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__)
-app=application
+app = Flask(__name__)
 @app.route('/')
 def home():
     return "Welcome to the Model Training API!"
@@ -35,5 +34,5 @@ def predict():
             import traceback
             traceback.print_exc()
             return render_template('home.html', error_text='Error occurred: {}'.format(str(e)))
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)

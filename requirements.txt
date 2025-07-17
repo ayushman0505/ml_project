@@ -7,5 +7,6 @@ xgboost
 catboost
 dataclasses
 dill
-Flask
+flask
+gunicorn
 # -e .
